@@ -22,10 +22,6 @@ http.listen(port, host, () => {
   console.log(`Socket.IO server running at http://${host}:${port}/`);
 });
 
-app.get('/test', (req, res) => {
-  res.send('hello world');
-});
-
 app.post('/msg', (req, res) => {
   const msg = req.body.msg;
   if (msg) {
