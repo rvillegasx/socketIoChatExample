@@ -23,9 +23,14 @@ http.listen(port, host, () => {
 });
 
 app.post('/msg', (req, res) => {
+  res.set("Connection", "close");
   const msg = req.body.msg;
   if (msg) {
-    res.send('ok');
+    res.status(200).send({ ok: true });
     io.emit('chat message', msg);
+    res.end();
+  } else {
+    res.status(200).send({ ok: false });
+    res.end();
   }
 });
